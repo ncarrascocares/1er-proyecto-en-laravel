@@ -13,3 +13,5 @@ Route::get('nosotros/{nombre?}', 'PagesController@nosotros')->name('nosotros');
 Route::post('inicio', 'PagesController@crear')->name('notas.crear');
 
 Route::get('inicio/editar/{id}', 'PagesController@editar')->name('notas.editar');
+
+Route::put('/editar/{id}', 'PagesController@update')->name('notas.update');

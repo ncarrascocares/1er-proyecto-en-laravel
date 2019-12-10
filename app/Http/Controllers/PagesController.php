@@ -45,4 +45,12 @@ class PagesController extends Controller
         $nota = App\Nota::findOrFail($id);
         return view('notas.editar', compact('nota'));
     }
+
+    public function update(Request $request, $id){
+        $notaActualizada = App\Nota::find($id);
+        $notaActualizada->nombre = $request->nombre;
+        $notaActualizada->descripcion = $request->descripcion;
+        $notaActualizada->save();
+        return back()->with('mensaje', 'Nota editada!');
+    }
 }
