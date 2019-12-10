@@ -24,12 +24,18 @@
       @error('nombre')
         <div class="alert alert-danger">
           Campo nombre es obligarorio
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+           </button>
         </div>
       @enderror
       
       @error('descripcion')
         <div class="alert alert-danger">
           Campo descripcion es obligaroria
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+           </button>
         </div>
       @enderror
 
