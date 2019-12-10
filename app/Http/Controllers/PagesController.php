@@ -43,6 +43,10 @@ class PagesController extends Controller
 
         //return $request->all();
 
+        //Validando la informacion ingresada por el usuario
+        $request->validate(['nombre' =>'required', 'descripcion' => 'required']);
+
+
         $notaNueva = new App\Nota;
         $notaNueva->nombre = $request->nombre;
         $notaNueva->descripcion = $request->descripcion;

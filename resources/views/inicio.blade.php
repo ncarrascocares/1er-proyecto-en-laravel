@@ -17,9 +17,24 @@
     @endif
     <!--Formulario para el ingreso de informacion-->
     <form method="POST" action="{{ route('notas.crear') }}">
+      <!--Este token se usa para verificar que el usuario autenticado es el que realiza las solicitudes a la aplicación.-->
       @csrf
-        <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2"/>
-        <input type="text" name="descripcion" placeholder="Descripcion" class="form-control mb-2"/>
+      
+      <!--Validacion para los campos nombre y comentario, si no hay registros enviara el mensaje que esta dentro-->
+      @error('nombre')
+        <div class="alert alert-danger">
+          Campo nombre es obligarorio
+        </div>
+      @enderror
+      
+      @error('descripcion')
+        <div class="alert alert-danger">
+          Campo descripcion es obligaroria
+        </div>
+      @enderror
+
+        <input type="text" name="nombre" placeholder="Nombre" class="form-control mb-2" value="{{ old("nombre")}}"/>
+        <input type="text" name="descripcion" placeholder="Descripcion" class="form-control mb-2" value="{{ old("descripcion")}}"/>
         <button class="btn btn-primary btn-block" type="submit">Agregar</button>
     </form>
     <div class="container my-4">
