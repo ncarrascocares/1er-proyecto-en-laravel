@@ -51,7 +51,7 @@
               <th scope="col">#id</th>
               <th scope="col">Nombre</th>
               <th scope="col">Descripción</th>
-              <th scope="col">Handle</th>
+              <th scope="col">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -60,7 +60,7 @@
                   <th scope="row">{{$item->id}}</th>
                   <td><a href="{{route('notas.detalle', $item)}}">{{$item->nombre}}</a></td>
                   <td>{{$item->descripcion}}</td>
-                  <td>@mdo</td>
+                  <td><a href="{{ route('notas.editar', $item)}}" class="btn btn-warning btn-sm">Editar</a></td>
                 </tr>
             @endforeach()
           </tbody>
