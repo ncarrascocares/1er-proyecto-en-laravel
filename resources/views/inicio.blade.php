@@ -19,7 +19,6 @@
     <form method="POST" action="{{ route('notas.crear') }}">
       <!--Este token se usa para verificar que el usuario autenticado es el que realiza las solicitudes a la aplicación.-->
       @csrf
-      
       <!--Validacion para los campos nombre y comentario, si no hay registros enviara el mensaje que esta dentro-->
       @error('nombre')
         <div class="alert alert-danger">
@@ -29,7 +28,6 @@
            </button>
         </div>
       @enderror
-      
       @error('descripcion')
         <div class="alert alert-danger">
           Campo descripcion es obligaroria
@@ -60,13 +58,21 @@
                   <th scope="row">{{$item->id}}</th>
                   <td><a href="{{route('notas.detalle', $item)}}">{{$item->nombre}}</a></td>
                   <td>{{$item->descripcion}}</td>
-                  <td><a href="{{ route('notas.editar', $item)}}" class="btn btn-warning btn-sm">Editar</a></td>
+                  <td>
+                    <a href="{{ route('notas.editar', $item)}}" class="btn btn-warning btn-sm">Editar</a>
+                    <!--Formulario para la opcion eliminar-->
+                    <form action="{{route('notas.eliminar', $item)}}" method="POST" class="d-inline">
+                      @method('DELETE')
+                      <!--Token de seguridad-->
+                      @csrf
+                      <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                    </form>
+                  </td>
                 </tr>
             @endforeach()
           </tbody>
         </table>
     </div>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
